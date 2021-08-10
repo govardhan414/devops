@@ -1,0 +1,16 @@
+pipeline{
+    agent any
+    PATH = "/opt/apache-maven-3.8.1/bin:$PATH"
+    stages{
+        stage("hello"){
+            steps{
+                git branch: 'main', credentialsId: '1cc302f7-6af9-419e-8334-5a1a772cf0e9', url: 'https://github.com/govardhan414/devops.git'
+            }
+            stage("build"){
+            steps{
+                sh "mvn clean install"
+            }
+        
+        }
+    }
+}
